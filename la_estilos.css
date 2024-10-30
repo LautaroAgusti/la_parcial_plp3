@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('la_imagenes/background.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.la_contenedor-juego {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con algo de transparencia */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+}
+
+.la_titulo {
+    font-size: 2rem;
+    color: #333;
+}
+
+.la_letras button {
+    font-size: 1.2rem;
+    margin: 5px;
+    padding: 10px;
+    width: 40px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.la_palabra {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    margin: 20px 0;
+    text-align: center;
+    color: #333;
+}
+
+.la_dibujo {
+    margin: 20px 0;
+}
+
+#la_canvas-ahorcado {
+    border: 2px solid #a29bfe;
+}
