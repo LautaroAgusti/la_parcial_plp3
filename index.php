@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego del Ahorcado</title>
-    <link rel="stylesheet" href="la_estilos.css">
+    <title>El Ahorcado</title>
+    <link rel="stylesheet" href="./la_css/la_estilos.css">
 </head>
 <body>
     <div class="la_contenedor-juego">
@@ -20,6 +20,6 @@
         <div class="la_contador-intentos" id="la_intentos">Intentos restantes: 6</div>
     </div>
 
-    <script src="la_script.js"></script>
+    <script src="./la_script/la_script.js"></script>
 </body>
 </html>

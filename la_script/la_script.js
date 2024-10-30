@@ -4,7 +4,7 @@ let letrasUsadas = [];
 
 // Función para obtener una nueva palabra y reiniciar el juego
 function obtenerPalabra() {
-    fetch('la_funciones.php')
+    fetch('./la_php/la_funciones.php')
         .then(response => response.json())
         .then(data => {
             palabra = data.palabra;
@@ -24,6 +24,7 @@ function obtenerPalabra() {
 // Función para reiniciar el juego al perder
 function reiniciarJuego() {
     alert(`Juego terminado. La palabra era: ${palabra}. El juego se reiniciará.`);
+    registrarResultado(palabra, 'fallo');  // Registrar fallo en la base de datos
     obtenerPalabra();
 }
 
@@ -58,6 +59,7 @@ function la_verificarLetra(letra, button) {
             // Verifica si el usuario ha ganado después de mostrar la palabra
             if (!palabra.split('').some(letra => !letrasUsadas.includes(letra.toUpperCase()))) {
                 alert(`¡Ganaste! La palabra era: ${palabra}`);
+                registrarResultado(palabra, 'acierto');  // Registrar acierto en la base de datos
                 obtenerPalabra();  // Reinicia con una nueva palabra si gana
             }
         } else {
@@ -68,6 +70,24 @@ function la_verificarLetra(letra, button) {
             if (intentos === 0) reiniciarJuego();
         }
     }
+}
+
+// Función para registrar el resultado en la base de datos
+function registrarResultado(palabra, resultado) {
+    fetch('./la_php/la_funciones.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `palabra=${encodeURIComponent(palabra)}&resultado=${resultado}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Mostrar la respuesta del servidor
+    })
+    .catch(error => {
+        console.error('Error al registrar resultado:', error);
+    });
 }
 
 // Función para dibujar el ahorcado progresivamente en el canvas
